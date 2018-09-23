@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#262a2d"
+    tools:context=".AddImageActivity">
+
+    <include
+        android:id="@+id/addImageLayout"
+        layout="@layout/toolbar_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/addImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="Profile Image"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="w,3:4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImageLayout" />
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/layout_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImageView" />
+
+    <Button
+        android:id="@+id/addImageButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/search_button_bg"
+        android:text="Set Image"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="262dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addImageButton"
+        app:layout_constraintEnd_toEndOf="@+id/addImageButton"
+        app:layout_constraintStart_toStartOf="@+id/addImageButton"
+        app:layout_constraintTop_toTopOf="@+id/addImageButton"
+        app:srcCompat="@drawable/search_outline" />
+
+</android.support.constraint.ConstraintLayout>

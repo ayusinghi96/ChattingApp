@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_bg"
+    tools:context=".ChangeStatusActivity">
+
+    <include layout="@layout/toolbar_layout"
+        android:id="@+id/status_appbar"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/status_update_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:hint="Your Status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:inputType="text"
+            android:textColor="#262a2d"
+            android:lines="2" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/update_status"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/search_button_bg"
+        android:text="change status"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_update_bar" />
+
+
+    <ImageView
+        android:layout_width="212dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/update_status"
+        app:layout_constraintEnd_toEndOf="@+id/update_status"
+        app:layout_constraintStart_toStartOf="@+id/update_status"
+        app:layout_constraintTop_toTopOf="@+id/update_status"
+        app:srcCompat="@drawable/search_outline" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="New Status"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status_appbar" />
+
+
+</android.support.constraint.ConstraintLayout>

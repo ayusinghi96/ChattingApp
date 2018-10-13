@@ -101,6 +101,8 @@ public class FriendsFragment extends Fragment {
                         holder.setUserName(userName);
                         holder.setStatus(userStatus);
 
+
+
                     }
 
                     @Override

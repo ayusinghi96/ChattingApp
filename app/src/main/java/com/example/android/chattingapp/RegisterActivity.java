@@ -104,8 +104,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                     HashMap<String, String> user_data = new HashMap<>();
                     user_data.put("name", display_name.toLowerCase());
-                    user_data.put("image", "https://firebasestorage.googleapis.com/v0/b/chattingapp-3ed98.appspot.com/o/profile_images%2Fdefault_profile_image.jpg?alt=media&token=0bd41aef-bc7e-48ea-9540-c157dd4d521b");
-                    user_data.put("thumb_image", "https://firebasestorage.googleapis.com/v0/b/chattingapp-3ed98.appspot.com/o/profile_images%2Fdefault_profile_image.jpg?alt=media&token=0bd41aef-bc7e-48ea-9540-c157dd4d521b");
+                    user_data.put("image", "https://firebasestorage.googleapis.com/v0/b/chattingapp-3ed98.appspot.com/o/profile_images%2Fmsn-people-person-profile-user-icon-icon-search-engine-11.png?alt=media&token=a4205e70-6ed2-4413-abba-76ffd97cd7a8");
+                    user_data.put("thumb_image", "https://firebasestorage.googleapis.com/v0/b/chattingapp-3ed98.appspot.com/o/profile_images%2Fmsn-people-person-profile-user-icon-icon-search-engine-11.png?alt=media&token=a4205e70-6ed2-4413-abba-76ffd97cd7a8");
                     user_data.put("status", "Hi there I am using Chatting App");
 
                     mDatabase.setValue(user_data).addOnCompleteListener(new OnCompleteListener<Void>() {

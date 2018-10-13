@@ -240,7 +240,7 @@ public class UserProfileActivity extends AppCompatActivity {
                                                         if(task.isSuccessful()){
 
                                                             current_friend_state = "request_sent";
-                                                            mButtonState.setText("Cancel Request");
+                                                            mButtonState.setText("Cancel Friend Request");
                                                             mRequest.setEnabled(true);
 
                                                         }else{

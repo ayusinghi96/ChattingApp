@@ -3,11 +3,14 @@ package com.example.android.chattingapp;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -127,9 +130,28 @@ public class MainActivity extends AppCompatActivity {
         // user is returned to the Start Activity
         if(item.getItemId() == R.id.mainLogout){
 
-            // default method signOut is used to signOut of the current user login
-            FirebaseAuth.getInstance().signOut();
-            gotoStart();
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setMessage("Are you sure you want to log out?")
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // default method signOut is used to signOut of the current user login
+                            FirebaseAuth.getInstance().signOut();
+                            gotoStart();
+                        }})
+                    .setNegativeButton("CANCEL", null)
+                    .setCancelable(false);
+
+            AlertDialog dialog = builder.create();
+
+            dialog.show();
+
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+            positiveButton.setTextColor(Color.parseColor("#FF0B8B42"));
+            negativeButton.setTextColor(Color.parseColor("#FF0B8B42"));
+
         }
 
         // if the item selected is Account Settings then user is sent to Setting Activity

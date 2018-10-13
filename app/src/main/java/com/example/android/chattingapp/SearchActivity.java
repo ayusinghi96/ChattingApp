@@ -2,6 +2,7 @@ package com.example.android.chattingapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,9 +17,12 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -65,15 +69,27 @@ public class SearchActivity extends AppCompatActivity {
 
     private void userSearch(String searchTerm) {
 
-        Toast.makeText(SearchActivity.this, "Searching...", Toast.LENGTH_LONG).show();
+        Toast.makeText(SearchActivity.this, "Searching..", Toast.LENGTH_SHORT).show();
 
         Query mDatabaseQuery = mDatabase.orderByChild("name").startAt(searchTerm).endAt(searchTerm+"\uf8ff");
+
 
         FirebaseRecyclerOptions<Users> users =
                 new FirebaseRecyclerOptions.Builder<Users>()
                         .setQuery(mDatabaseQuery, Users.class)
                         .build();
+        mDatabaseQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists())
+                    Toast.makeText(SearchActivity.this, "Oops nothing found!!", Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Users, UserViewHolder>(users) {
@@ -113,9 +129,7 @@ public class SearchActivity extends AppCompatActivity {
         adapter.startListening();
         mRecycleView.setAdapter(adapter);
 
-
     }
-
 
     public static class UserViewHolder extends RecyclerView.ViewHolder{
 

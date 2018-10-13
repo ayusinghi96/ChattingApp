@@ -40,9 +40,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class FriendsFragment extends Fragment {
 
-    private static View mView;
     private DatabaseReference mFriendReference;
-    private DatabaseReference mUserReference;
+    public  DatabaseReference mUserReference;
     private FirebaseAuth mAuth;
 
 
@@ -90,23 +89,18 @@ public class FriendsFragment extends Fragment {
 
         FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Friends, FriendsViewHolder>(friends) {
             @Override
-            protected void onBindViewHolder(@NonNull FriendsViewHolder holder, int position, @NonNull Friends model) {
-
-                FriendsViewHolder.setDate(model.getBecame_friends_on());
-                Log.d("RESULT OF QUERY","onBindViewHolder() returned: " + model.getBecame_friends_on());
-
-                final String userUID = getRef(position).getKey();
-
-                mUserReference.child(userUID).addValueEventListener(new ValueEventListener() {
+            protected void onBindViewHolder(@NonNull final FriendsViewHolder holder, int position, @NonNull final Friends model) {
+                mUserReference.child(getRef(position).getKey()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String userName = dataSnapshot.child("name").getValue().toString();
                         String userStatus = dataSnapshot.child("status").getValue().toString();
                         String userThumb = dataSnapshot.child("thumb_image").getValue().toString();
+                        holder.setThumb(userThumb);
+                        holder.setDetails(model.getBecame_friends_on());
+                        holder.setUserName(userName);
+                        holder.setStatus(userStatus);
 
-                        FriendsViewHolder.setUserName(userName);
-                        FriendsViewHolder.setStatus(userStatus);
-                        FriendsViewHolder.setThumb(userThumb);
                     }
 
                     @Override
@@ -114,6 +108,7 @@ public class FriendsFragment extends Fragment {
 
                     }
                 });
+
             }
 
             @NonNull
@@ -133,33 +128,36 @@ public class FriendsFragment extends Fragment {
     }
 
 
-    public static class FriendsViewHolder extends RecyclerView.ViewHolder{
+    public class FriendsViewHolder extends RecyclerView.ViewHolder{
 
-        public FriendsViewHolder(View itemView) {
+
+        View mView;
+        FriendsViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
         }
 
-        public static void setDate(String date){
+        public  void setDetails(String date){
 
             TextView friendSince = mView.findViewById(R.id.date);
             friendSince.setText(date);
 
+
         }
 
-        public static void setUserName(String name){
+        public void setUserName(String name){
 
             TextView userName = mView.findViewById(R.id.user_name);
             userName.setText(name);
         }
 
-        public static void setStatus(String status){
+        public  void setStatus(String status){
 
             TextView userStatus = mView.findViewById(R.id.status);
             userStatus.setText(status);
         }
 
-        public static void setThumb(final String url){
+        public  void setThumb(final String url){
 
             final CircleImageView userThumb = mView.findViewById(R.id.profile_thumb);
             Picasso.get().load(url).networkPolicy(NetworkPolicy.OFFLINE).into(userThumb, new Callback() {

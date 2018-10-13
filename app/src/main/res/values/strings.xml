@@ -22,4 +22,6 @@
     <string name="profile_image">Profile Image</string>
     <string name="send_friend_request">Send friend request</string>
     <string name="decline_friend_request">Decline Friend Request</string>
+    <string name="accept">accept</string>
+    <string name="decline">decline</string>
 </resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="wrap_content">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_thumb"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/profile_bg"
+        android:padding="4dp"
+        android:scaleType="centerCrop"
+        android:src="@android:color/darker_gray"
+        app:civ_border_overlay="false"
+        app:civ_fill_color="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="User Name"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/profile_thumb"
+        app:layout_constraintTop_toTopOf="@+id/profile_thumb" />
+
+    <Button
+        android:id="@+id/accept_button"
+        android:layout_width="100dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="3dp"
+        android:background="@drawable/search_button_bg"
+        android:text="@string/accept"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_thumb"
+        app:layout_constraintStart_toStartOf="@+id/user_name" />
+
+    <Button
+        android:id="@+id/reject_button"
+        android:layout_width="100dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/search_button_bg"
+        android:text="@string/decline"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_thumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="106dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/accept_button"
+        app:layout_constraintEnd_toEndOf="@+id/accept_button"
+        app:layout_constraintStart_toStartOf="@+id/accept_button"
+        app:layout_constraintTop_toTopOf="@+id/accept_button"
+        app:srcCompat="@drawable/search_outline" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="106dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/reject_button"
+        app:layout_constraintEnd_toEndOf="@+id/reject_button"
+        app:layout_constraintStart_toStartOf="@+id/reject_button"
+        app:layout_constraintTop_toTopOf="@+id/reject_button"
+        app:srcCompat="@drawable/search_outline" />
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
